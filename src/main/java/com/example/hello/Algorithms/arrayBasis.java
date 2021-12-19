@@ -12,8 +12,8 @@ public class arrayBasis {
         int[] arr ={1,2,3,4,5,6,7};
         System.out.println(findMax(arr));
         System.out.println(findAvg(arr));
-
-
+        System.out.println(copyArray(arr)[0]);
+        System.out.println(reverseArray(arr));
     }
 
     /***
@@ -43,12 +43,24 @@ public class arrayBasis {
     /***
      * 复制数组
      */
-
-
+   public static int[] copyArray(int[] arr){
+       int[] array =new int[arr.length];
+       for (int i = 0; i < arr.length; i++) {
+           array[i] =arr[i];
+       }
+     return array;
+   }
 
     /***
      * 颠倒数组元素的顺序
      */
+    public static int[] reverseArray(int[] arr){
+        int[] array =new int[arr.length];
+        for (int i = 0; i <arr.length ; i++) {
+            array[arr.length-i]=arr[i];
+        }
+        return array;
+    }
 
 
 }
