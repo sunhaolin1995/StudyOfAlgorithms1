@@ -1,0 +1,54 @@
+package com.example.hello.Algorithms;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+/***
+ * 数组的基本处理代码
+ */
+public class arrayBasis {
+    public static void main(String[] args) {
+        int[] arr ={1,2,3,4,5,6,7};
+        System.out.println(findMax(arr));
+        System.out.println(findAvg(arr));
+
+
+    }
+
+    /***
+     * 找出数组中最大的元素
+     */
+    public static int findMax(int[] arr1){
+        int a =  Integer.MIN_VALUE;
+        for (int i = 0; i <arr1.length ; i++) {
+            if (a <= arr1[i]){
+                a =arr1[i];
+            }
+        }
+       return a;
+    }
+
+    /***
+     * 计算数组元素的平均值
+     */
+        public static int findAvg(int[] arr){
+            int a =0;
+            for (int i = 0; i <arr.length ; i++) {
+                 a=a+arr[i];
+            }
+        return a/arr.length;
+        }
+
+    /***
+     * 复制数组
+     */
+
+
+
+    /***
+     * 颠倒数组元素的顺序
+     */
+
+
+}
