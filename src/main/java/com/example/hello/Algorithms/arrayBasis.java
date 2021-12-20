@@ -13,9 +13,8 @@ public class arrayBasis {
         System.out.println(findMax(arr));
         System.out.println(findAvg(arr));
         System.out.println(copyArray(arr)[0]);
-        System.out.println(reverseArray(arr));
+        System.out.println(reverseArray(arr)[0]);
     }
-
     /***
      * 找出数组中最大的元素
      */
@@ -28,7 +27,6 @@ public class arrayBasis {
         }
        return a;
     }
-
     /***
      * 计算数组元素的平均值
      */
@@ -39,7 +37,6 @@ public class arrayBasis {
             }
         return a/arr.length;
         }
-
     /***
      * 复制数组
      */
@@ -50,16 +47,16 @@ public class arrayBasis {
        }
      return array;
    }
-
     /***
      * 颠倒数组元素的顺序
      */
     public static int[] reverseArray(int[] arr){
-        int[] array =new int[arr.length];
-        for (int i = 0; i <arr.length ; i++) {
-            array[arr.length-i]=arr[i];
+        for (int i = 0; i <arr.length/2 ; i++) {
+            int temp=arr[i];
+            arr[i]=arr[arr.length-i-1];
+            arr[arr.length-i-1]=temp;
         }
-        return array;
+        return arr;
     }
 
 
