@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 public class BinarySearch {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
        int[] whitelist =In.readInts(args[0]);
        Arrays.sort(whitelist);
        while (!StdIn.isEmpty()){
@@ -13,7 +13,7 @@ public class BinarySearch {
                StdOut.println(key);
            }
        }
-    }
+    }*/
     public static int rank(int key ,int[] a){
         int lo =0;
         int hi =a.length-1;
