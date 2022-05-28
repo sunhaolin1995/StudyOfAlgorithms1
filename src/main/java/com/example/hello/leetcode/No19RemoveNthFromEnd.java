@@ -9,9 +9,9 @@ public class No19RemoveNthFromEnd {
 
     }
 
-    public static ListNode removeNthFromEnd(ListNode head, int n){
+    /*public static ListNode removeNthFromEnd(ListNode head, int n){
 
 
-    }
+    }*/
 
 }
