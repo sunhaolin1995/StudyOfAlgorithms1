@@ -18,10 +18,15 @@ public class No2BubbleSort {
 
     public static void BubbleSort(int[] num1){
         for (int i = 0; i < num1.length-1; i++) {
-            for (int j = 0; j < num1.length-1; j++) {
+            int atChange=0;
+            for (int j = 0; j < num1.length-1-i; j++) {
                 if (num1[j]<num1[j+1]){
                     exchangeElement(num1,j);
+                    atChange=1;
                 }
+            }
+            if (atChange==1){
+                break;
             }
         }
     }
