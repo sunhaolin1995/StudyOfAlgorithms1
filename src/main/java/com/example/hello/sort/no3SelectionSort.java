@@ -5,6 +5,8 @@ package com.example.hello.sort;
  * @date: 2022/6/1 22:22
  */
 
+import java.util.Arrays;
+
 /***
  *    选择排序(Selection sort)是一种简单直观的排序算法。
  *  * 它的工作原理是每一次从
@@ -16,21 +18,20 @@ public class no3SelectionSort {
     public static void main(String[] args) {
         int[] num1 ={2,44,5,67,89,10};
         SelectionSort(num1);
+        System.out.println(Arrays.toString(num1));
     }
 
     public static void SelectionSort(int[] num1){
-        int max=0;
-        int k=0;
         for (int i = 0; i < num1.length ; i++) {
-            if (max < num1[i]){
-                max=num1[i];
+            int minValue =i;
+            for (int j = i+1; j < num1.length ; j++) {
+                if (num1[j]<num1[minValue]){
+                    minValue=j;
+                }
             }
-            k++;
-        }
-
-        for (int j = 0; j < num1.length; j++) {
-            int temp;
-
+            int temp =num1[i];
+            num1[i]=num1[minValue];
+            num1[minValue]=temp;
 
         }
 
