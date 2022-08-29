@@ -13,7 +13,7 @@ public class no4QuickSorting {
     public static void quickSorting(int[] num1,int L,int R){
        int i=L;
        int j=R;
-       int pivot=num1[(L+R)/2]
+       int pivot=num1[(L+R)/2];
 
 
     }
