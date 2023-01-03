@@ -13,7 +13,7 @@ public class no2042areNumbersAscending {
         System.out.println(areNumbersAscending(s));
     }
 
-    public static boolean areNumbersAscending(String s) {
+   /* public static boolean areNumbersAscending(String s) {
         String[] strings = s.split(" ");
 
         List<String> numList = new ArrayList<>();
@@ -45,6 +45,22 @@ public class no2042areNumbersAscending {
         for (int i = 0; i < numList1.size()-1; i++) {
             if (Integer.valueOf(numList1.get(i)) >= Integer.valueOf(numList1.get(i+1))){
                 return false;
+            }
+        }
+
+        return true;
+    }*/
+
+    public static boolean areNumbersAscending(String s) {
+        int prev = 0;
+        String[] strings = s.split(" ");
+
+        for (String number:strings) {
+            if (Character.isDigit(number.charAt(0))){
+                if (prev >= Integer.valueOf(number)){
+                    return false;
+                }
+                prev = Integer.valueOf(number);
             }
         }
 
