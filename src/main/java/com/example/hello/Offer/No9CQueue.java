@@ -13,38 +13,48 @@ public class No9CQueue {
         No9CQueue no9CQueue= new No9CQueue();
         no9CQueue.appendTail(5);
         no9CQueue.appendTail(2);
+        no9CQueue.appendTail(1);
+
+        System.out.println(no9CQueue.deleteHead());
+
+        no9CQueue.appendTail(4);
         System.out.println(no9CQueue.deleteHead());
         System.out.println(no9CQueue.deleteHead());
 
+        no9CQueue.appendTail(10);
+        System.out.println(no9CQueue.deleteHead());
+        System.out.println(no9CQueue.deleteHead());
     }
 
 
-    private Stack<Integer> stack;
+    private Stack<Integer> inStack;
+
+    private Stack<Integer> outStack;
+
 
     public No9CQueue() {
-         stack = new Stack<Integer>();
+         inStack = new Stack<Integer>();
+         outStack = new Stack<>();
     }
 
     public void appendTail(int value) {
-         stack.add(value);
+         inStack.add(value);
     }
 
     public int deleteHead() {
-        if (stack.size() == 0){
-            return -1;
+        if (outStack.isEmpty()) {
+            if (inStack.isEmpty()) {
+                return -1;
+            }
+            in2out();
         }
-        Stack<Integer> stackResult = new Stack<>();
-        while (stack.size()>0){
-            stackResult.add(stack.pop());
+        return outStack.pop();
+    }
+
+    private void in2out() {
+        while (!inStack.isEmpty()) {
+            outStack.push(inStack.pop());
         }
-        int result = stackResult.pop();
-
-        while (stackResult.size() > 0){
-            stack.add(stackResult.pop());
-        }
-
-
-       return result;
     }
 
 }
