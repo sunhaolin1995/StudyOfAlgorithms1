@@ -9,7 +9,7 @@ public class No2185prefixCount {
     }
 
     public static int prefixCount(String[] words, String pref) {
-        int result = 0;
+        /*int result = 0;
 
         for (int i = 0; i < words.length ; i++) {
             if (pref.length() <= words[i].length()){
@@ -29,7 +29,17 @@ public class No2185prefixCount {
             }
 
         }
-        return result;
+        return result;*/
+
+        int res = 0;
+        for (String word : words) {
+            if (word.startsWith(pref)) {
+                res++;
+            }
+        }
+        return res;
+
+
     }
 
 
