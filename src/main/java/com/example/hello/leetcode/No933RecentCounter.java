@@ -29,17 +29,21 @@ package com.example.hello.leetcode;
         保证每次对 ping 调用所使用的 t 值都 严格递增
         至多调用 ping 方法 104 次*/
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 public class No933RecentCounter {
 
-    private int[] pingArray;
+    private Queue<Integer> queue;
 
     public No933RecentCounter() {
+        queue = new ArrayDeque<Integer>();
     }
 
     public int ping(int t) {
-        for (int i = 0; i < t ; i++) {
-
+        queue.offer(t);
+        while (queue.peek() < t - 3000) {
+            queue.poll();
         }
-        return 0;
+        return queue.size();
     }
 }
