@@ -21,7 +21,7 @@ public class No1669MergeInBetween {
         listNodeB.next = new ListNode(100003);
 
 
-        System.out.println(mergeInBetween(listNodeA,3,4,listNodeB).val);
+        System.out.println(mergeInBetween(listNodeA,2,3,listNodeB).val);
 
 
     }
@@ -39,10 +39,10 @@ public class No1669MergeInBetween {
         }
 
         preA.next =list2;
-        while (preA.next != null){
-            preA = preA.next;
+        while (list2.next != null){
+            list2 = list2.next;
         }
-        preA.next = aftB;
+        list2.next = aftB;
 
         return list1;
 
