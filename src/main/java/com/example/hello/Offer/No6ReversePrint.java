@@ -1,6 +1,7 @@
 package com.example.hello.Offer;
 
 
+import java.util.Stack;
 
 /**
  * @author 孙浩林
@@ -9,9 +10,21 @@ package com.example.hello.Offer;
 public class No6ReversePrint {
     public static void main(String[] args) {
 
+        ListNode head = new ListNode(1);
+        ListNode numTwo = new ListNode(3);
+        head.next = numTwo;
+        ListNode numThree = new ListNode(2);
+        numTwo.next = numThree;
+
+
+        int[] ints = reversePrint(head);
+        for (int i = 0; i < ints.length; i++) {
+            System.out.println(ints[i]);
+        }
+
     }
 
-    public int[] reversePrint(ListNode head) {
+    /*public int[] reversePrint(ListNode head) {
         ListNode node = head;
         int count =0 ;
         while(node != null){
@@ -29,6 +42,27 @@ public class No6ReversePrint {
 
         return nums;
 
+    }*/
+
+    public static int[] reversePrint(ListNode head) {
+        Stack<Integer> reversePrint = new Stack();
+        while(head != null){
+            reversePrint.push(head.val);
+            head = head.next;
+        }
+
+        int[] result = new int[reversePrint.size()];
+
+        for (int i = 0; i < result.length; i++) {
+            /***
+             * The only difference between peek and pop is that the peek method just returns the topmost element;
+             * however, in the case of a pop method,the topmost element is returned and also that element is deleted from the stack.
+             */
+            result[i] = reversePrint.pop();
+
+        }
+
+        return result;
     }
 
 }
