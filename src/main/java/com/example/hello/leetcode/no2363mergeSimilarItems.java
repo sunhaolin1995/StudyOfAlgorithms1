@@ -14,7 +14,7 @@ public class no2363mergeSimilarItems {
         System.out.println( mergeSimilarItems(items1,items2));
     }
 
-    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+    /*public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
 
         Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < items1.length; i++) {
@@ -35,6 +35,37 @@ public class no2363mergeSimilarItems {
         Collections.sort(result,(a,b)-> a.get(0)-b.get(0));
 
         return result;
+    }*/
+    public static List<List<Integer>> mergeSimilarItems(int[][] items1, int[][] items2) {
+
+        /*int[] ans = new int[1001];
+        for (int[] x : items1) {
+            ans[x[0]] += x[1];
+        }
+        for (int[] x : items2) {
+            ans[x[0]] += x[1];
+        }*/
+
+        int[] ans = new int[1001];
+        for (int i = 0; i < items1.length; i++) {
+           ans[items1[i][0]] += items1[i][1];
+        }
+        for (int j = 0; j < items2.length; j++) {
+            ans[items2[j][0]] += items2[j][1];
+        }
+
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < ans.length; i++) {
+            if (ans[i]>0){
+                List<Integer> list = new ArrayList<>();
+                list.add(i);
+                list.add(ans[i]);
+                result.add(list);
+            }
+        }
+
+        return result;
     }
+
 
 }
