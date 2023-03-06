@@ -10,6 +10,19 @@ public class No1653MinimumDeletions {
         System.out.println(minimumDeletions(s));
     }
     public static int minimumDeletions(String s) {
+        int res = 0 ,cnt =0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i)=='b'){
+                cnt++;
+            }else {
+                res = Math.min(res+1,cnt);
+            }
+
+        }
+        return res;
+    }
+
+    /*public static int minimumDeletions(String s) {
 
         int leftb =0 ,righta =0;
         for (int i = 0; i <s.length() ; i++) {
@@ -29,6 +42,6 @@ public class No1653MinimumDeletions {
         }
         return res;
 
-    }
+    }*/
 
 }
