@@ -17,9 +17,6 @@ public class No36isValidSudoKu {
                 }
             }
         }
-        for (int i = 0; i < ; i++) {
-            
-        }
         
         return true;
     }
