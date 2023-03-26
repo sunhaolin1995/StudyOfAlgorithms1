@@ -1,5 +1,7 @@
 package com.example.hello.Offer;
 
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import java.util.Stack;
 
 /**
@@ -8,6 +10,9 @@ import java.util.Stack;
  */
 public class No9CQueue {
 
+
+    private Stack<Integer> inStack;
+    private Stack<Integer> outStack;
 
     public static void main(String[] args) {
         No9CQueue no9CQueue= new No9CQueue();
@@ -26,35 +31,31 @@ public class No9CQueue {
         System.out.println(no9CQueue.deleteHead());
     }
 
-
-    private Stack<Integer> inStack;
-
-    private Stack<Integer> outStack;
-
-
     public No9CQueue() {
-         inStack = new Stack<Integer>();
-         outStack = new Stack<>();
+        this.inStack = new Stack<>();
+        this.outStack = new Stack<>();
     }
 
     public void appendTail(int value) {
-         inStack.add(value);
+        inStack.push(value);
     }
 
     public int deleteHead() {
-        if (outStack.isEmpty()) {
-            if (inStack.isEmpty()) {
-                return -1;
-            }
-            in2out();
+        if (outStack.isEmpty()){
+           if (inStack.isEmpty()){
+               return -1;
+           }
+        }
+
+        while (!outStack.isEmpty()){
+            return outStack.pop();
+        }
+
+        while (!inStack.isEmpty()){
+            outStack.push(inStack.pop());
         }
         return outStack.pop();
     }
 
-    private void in2out() {
-        while (!inStack.isEmpty()) {
-            outStack.push(inStack.pop());
-        }
-    }
 
 }
