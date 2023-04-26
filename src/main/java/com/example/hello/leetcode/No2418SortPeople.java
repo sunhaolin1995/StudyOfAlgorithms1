@@ -16,6 +16,26 @@ public class No2418SortPeople {
     }
 
     public static String[] sortPeople(String[] names, int[] heights) {
+        //选择排序
+        int len = heights.length;
+        for (int i = 0; i < len-1 ; i++) {
+            int min = i ;//记录最小值的下标
+            for (int j = i+1; j <len ; j++) {
+                if (heights[j] > heights[min]){
+                    min = j;  //更新最小值下标
+                }
+            }
+            if (min != i){
+                int temp = heights[i];
+                heights[i] = heights[min];
+                heights[min] = temp;
+
+                String tempStr = names[i];
+                names[i] = names[min];
+                names[min] = tempStr;
+            }
+        }
+        /*// 冒泡排序
         for (int i = 0; i < heights.length; i++) {
             for (int j = i; j < heights.length ; j++) {
                 if (heights[i] <= heights[j]){
@@ -29,7 +49,7 @@ public class No2418SortPeople {
 
                 }
             }
-        }
+        }*/
         return names;
     }
 
