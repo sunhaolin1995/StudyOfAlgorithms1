@@ -14,24 +14,37 @@ public class No1048LongestStrChain {
        String[] words = {"a","ba","b","bca","bda","bdca"};
        System.out.println(longestStrChain(words));
 
-
     }
 
-    public static int longestStrChain(String[] words) {
-        Arrays.sort(words,Comparator.comparingInt(num->num.length()));
-        Map<String,Integer> d = new HashMap<>();
+    public static Map<String,Integer> ws = new HashMap<>();
 
-        int res =0;
-        for (int i = 0; i <words.length ; i++) {
-            int x = 0;
-            for (int j = 0; j < words[i].length(); j++) {
-                String s = words[i].substring(0,j)+words[i].substring(j+1);
-                x = Math.max(x,d.getOrDefault(s,0)+1);
-            }
-            d.put(words[i], x);
-            res = Math.max(res,x);
+    public static int longestStrChain(String[] words) {
+        for (int i = 0; i < words.length; i++) {
+            ws.put(words[i], 0 );
         }
+        int res =0;
+
+        for (String s :ws.keySet()) {
+            res = Math.max(res,dfs(s));
+        }
+
         return res;
+    }
+
+    public static int dfs(String s){
+        int res = ws.get(s);
+        if (res>0){
+            return res;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            String s1 = s.substring(0,i)+s.substring(i+1);
+            if (ws.containsKey(s1)){
+                res = Math.max(res,dfs(s1));
+            }
+
+        }
+        ws.put(s,res+1);
+        return res+1;
     }
 
 }
