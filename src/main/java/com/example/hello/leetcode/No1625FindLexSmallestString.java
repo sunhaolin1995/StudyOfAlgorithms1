@@ -37,12 +37,12 @@ public class No1625FindLexSmallestString {
             }
             String t1 = String.valueOf(cs);
             String t2 = s.substring(b)+s.substring(0,b);
-
+/*
             for (String t : com.sun.tools.javac.util.List.of(t1, t2)) {
                 if (vis.add(t)) {
                     q.offer(t);
                 }
-            }
+            }*/
         }
         return ans;
 

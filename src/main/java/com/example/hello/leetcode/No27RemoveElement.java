@@ -14,34 +14,16 @@ public class No27RemoveElement {
     }
 
     public static int removeElement(int[] nums, int val) {
-        int leftNum = nums.length-2, rightNum = nums.length-1;
-        while (leftNum >= 0){
-            if (nums[rightNum] == val){
-                //exchangeValue
-                int temp = nums[leftNum];
-                nums[leftNum] =nums[rightNum];
-                nums[rightNum] =temp;
+        int leftNum = 0,rightNum = nums.length-1;
+        while (leftNum <= rightNum){
+            if (nums[leftNum] == val){
+                nums[leftNum] = nums[rightNum];
                 rightNum--;
+            }else {
+                leftNum++;
             }
-            leftNum--;
         }
-        return rightNum;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return leftNum;
 
         /*int a=0;
         for (int i = 0; i <nums.length ; i++) {
