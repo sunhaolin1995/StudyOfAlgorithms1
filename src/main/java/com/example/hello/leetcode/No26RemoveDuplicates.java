@@ -7,12 +7,40 @@ public class No26RemoveDuplicates {
         int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         System.out.println(removeDuplicates(nums));
         for (int num : nums) {
-            System.out.println(num);
+            System.out.print(num);
         }
     }
 
     public static int removeDuplicates(int[] nums) {
-        int p = 0, q = 1;
+
+        int leftNum = 0,rightNum = 1;
+        while(rightNum<nums.length){
+            if (nums[leftNum] == nums[rightNum]){
+                rightNum++;
+            }else {
+                //exchange rightNum and rightNum+1
+                int temp = nums[leftNum+1];
+                nums[leftNum+1] =nums[rightNum];
+                nums[rightNum] =temp;
+                rightNum++;
+                leftNum++;
+            }
+        }
+
+        return leftNum+1;
+
+
+
+
+
+
+
+
+
+
+
+
+        /*int p = 0, q = 1;  2023.07.21
         while (q < nums.length ) {
             if (nums[p] == nums[q]){
                 q++;
@@ -22,7 +50,7 @@ public class No26RemoveDuplicates {
                 q++;
             }
         }
-        return p+1;
+        return p+1;*/
     }
 
 }
