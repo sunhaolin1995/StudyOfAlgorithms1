@@ -4,7 +4,7 @@ package com.example.hello.leetcode;
 public class No13romanToInt {
 
     public static void main(String[] args) {
-        
+
     }
 
     public int romanToInt(String s) {
