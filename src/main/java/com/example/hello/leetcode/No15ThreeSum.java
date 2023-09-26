@@ -12,7 +12,37 @@ public class No15ThreeSum {
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
         Set<List<Integer>> res = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            int left = i+1, right = nums.length - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] + nums[i] > 0) {
+                    right--;
+                } else if (nums[left] + nums[right] + nums[i] <0) {
+                    left++;
+                } else if (left != i  && right != i){
+                    List<Integer> cvt = new ArrayList<>();
+                    cvt.add(nums[left]);
+                    cvt.add(nums[right]);
+                    cvt.add(nums[i]);
+                    res.add(cvt);
+                    left++;
+                }
+                //更新指针left和right
+                if (left == i){
+                    left++;
+                }
+                if (right == i){
+                    right--;
+                }
+
+            }
+        }
+        return new ArrayList<>(res);
+
+
+       /* Set<List<Integer>> res = new HashSet<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length ; i++) {
             int left = i+1,right = nums.length-1;
@@ -32,7 +62,7 @@ public class No15ThreeSum {
                 }
             }
         }
-        return new ArrayList<>(res);
+        return new ArrayList<>(res);*/
     }
 
 }
