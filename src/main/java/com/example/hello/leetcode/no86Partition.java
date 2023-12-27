@@ -6,10 +6,54 @@ package com.example.hello.leetcode;
  */
 public class no86Partition {
     public static void main(String[] args) {
+        ListNode listnode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(4);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(2);
+        ListNode listNode5 = new ListNode(5);
+        ListNode listNode6 = new ListNode(2);
 
+        listnode1.next =listNode2;
+        listNode2.next =listNode3;
+        listNode3.next =listNode4;
+        listNode4.next =listNode5;
+        listNode5.next =listNode6;
+
+        ListNode listnode = partition(listnode1, 3);
+        while (listnode != null){
+            System.out.println(listnode.val);
+            listnode=listnode.next;
+        }
     }
 
-    public ListNode partition(ListNode head, int x) {
+    public static ListNode partition(ListNode head, int x) {
+        //result listNode
+        ListNode dummy =new ListNode();
+
+        //leftListNode
+        ListNode leftListNode = dummy;
+        //rightListNode
+        ListNode rightListNode =new ListNode();
+        ListNode copyRightListNode = rightListNode;
+
+        while (head!=null){
+            //if the value of head less than x ,add the value into leftListNode
+            if (head.val <x){
+                leftListNode.next=new ListNode(head.val);
+                leftListNode =leftListNode.next;
+            } else {
+                rightListNode.next = new ListNode(head.val);
+                rightListNode =rightListNode.next;
+            }
+            head=head.next;
+        }
+        //merge two linkedList into one linkedList
+        leftListNode.next = copyRightListNode.next;
+        return dummy.next;
+
+
+    }
+   /* public ListNode partition(ListNode head, int x) {
         //存放小于x的链表的虚拟头节点
         ListNode dummy1 =new ListNode(-1);
         //存放大于等于x的链表的虚拟头节点
@@ -33,12 +77,9 @@ public class no86Partition {
             p.next = null;
             p = temp;
         }
-
-     p1.next = dummy2.next;
-     dummy2.next = null;
-
-     return dummy1.next;
-
-    }
+        p1.next = dummy2.next;
+        dummy2.next = null;
+        return dummy1.next;
+    }*/
 
 }
