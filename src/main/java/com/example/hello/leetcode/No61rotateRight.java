@@ -25,6 +25,32 @@ public class No61rotateRight {
     }
 
     public static ListNode rotateRight(ListNode head, int k) {
+        //先把链表连接成环
+        //first we could make the linkedList to a circle
+        if (head == null) {
+            return null;
+        }
+        ListNode iter = head;
+        int n = 1;
+        while (iter.next != null) {
+            iter = iter.next;
+            n++;
+        }
+        iter.next = head;
+
+        int add = n - k % n;
+
+        while (add > 0) {
+            iter = iter.next;
+            add--;
+        }
+        ListNode ret = iter.next;
+        iter.next = null;
+        return ret;
+
+    }
+
+    /*public static ListNode rotateRight(ListNode head, int k) {
         if (head == null) {
             return null;
         }
@@ -56,5 +82,5 @@ public class No61rotateRight {
         }
         pre.next = dummyCopy.next;
         return res.next;
-    }
+    }*/
 }
