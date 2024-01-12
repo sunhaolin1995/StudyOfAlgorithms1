@@ -9,6 +9,13 @@ public class No2645addMinimum {
     }
 
     public static int addMinimum(String word) {
+        int res = word.charAt(0)-word.charAt(word.length()-1)+2;
+        for (int i = 1; i <word.length() ; i++) {
+            res =res+((word.charAt(i)-word.charAt(i-1)+2)%3);
+        }
+        return res;
+    }
+    /*public static int addMinimum(String word) {
         int t =1;
         for (int i = 1; i < word.length(); i++) {
             if (word.charAt(i) <= word.charAt(i-1)){
@@ -16,7 +23,7 @@ public class No2645addMinimum {
             }
         }
         return 3*t-word.length();
-    }
+    }*/
 
     /*public static int addMinimum(String word) {
         int res = 0;
