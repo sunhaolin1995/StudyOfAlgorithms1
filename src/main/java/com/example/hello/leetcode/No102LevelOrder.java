@@ -1,9 +1,9 @@
 package com.example.hello.leetcode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.Queue;
 
 public class No102LevelOrder {
 
@@ -21,16 +21,37 @@ public class No102LevelOrder {
         }
     }
 
-   static Map<Integer,List<Integer>> cvt = new HashMap<>();
-
     public static List<List<Integer>> levelOrder(TreeNode root) {
-        dfs(root,0);
-        List<List<Integer>> res =new ArrayList<>();
-        for (Integer key: cvt.keySet()){
-            res.add(cvt.get(key));
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        Queue<TreeNode> cvt = new LinkedList<>();
+        if (root!=null){
+            cvt.offer(root);
+        }
+        while (!cvt.isEmpty()) {
+            List<Integer> res1 = new ArrayList<>();
+            int n = cvt.size();
+            for (int i = 0; i < n; i++) {
+                TreeNode poll = cvt.poll();
+                res1.add(poll.val);
+                if (poll.left != null) {
+                    cvt.offer(poll.left);
+                }
+                if (poll.right != null) {
+                    cvt.offer(poll.right);
+                }
+
+            }
+            res.add(res1);
         }
         return res;
     }
+
+
+   /*static Map<Integer,List<Integer>> cvt = new HashMap<>();
+
+
     public static void dfs(TreeNode root,int level){
         if (root == null){
             return;
@@ -40,7 +61,7 @@ public class No102LevelOrder {
         cvt.put(level,integers);
         dfs(root.left,level+1);
         dfs(root.right,level+1);
-    }
+    }*/
 
 
 
