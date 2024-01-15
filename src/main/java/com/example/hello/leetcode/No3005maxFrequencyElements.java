@@ -1,7 +1,6 @@
 package com.example.hello.leetcode;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class No3005maxFrequencyElements {
 
@@ -11,6 +10,19 @@ public class No3005maxFrequencyElements {
     }
 
     public static int maxFrequencyElements(int[] nums) {
+        int ans = 0, maxCnt = 0;
+        HashMap<Integer,Integer> cnt = new HashMap<>();
+        for (int x:nums){
+            int c =cnt.merge(x,1,Integer::sum);
+            if (c>maxCnt){
+                maxCnt = ans=c;
+            } else if (c == maxCnt) {
+                ans += c;
+            }
+        }
+        return ans;
+    }
+    /*public static int maxFrequencyElements(int[] nums) {
         int[] cvt =new int[101];
         for (int i = 0; i < nums.length ; i++) {
             cvt[nums[i]]++;
@@ -27,6 +39,6 @@ public class No3005maxFrequencyElements {
             }
         }
         return res;
-    }
+    }*/
 
 }
