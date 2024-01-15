@@ -30,6 +30,28 @@ public class No82DeleteDuplicates {
     }
 
     public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode cur = dummy;
+        while (cur.next != null && cur.next.next!=null) {
+            if ( cur.next.val == cur.next.next.val) {
+                int num = cur.next.val;
+                while (cur.next != null && cur.next.val == num) {
+                    cur.next = cur.next.next;
+                }
+            } else {
+                cur = cur.next;
+            }
+
+        }
+        return dummy.next;
+    }
+
+
+    /*public static ListNode deleteDuplicates(ListNode head) {
         if (head == null){
             return null;
         }
@@ -49,6 +71,6 @@ public class No82DeleteDuplicates {
 
         }
         return dummy.next;
-    }
+    }*/
 
 }
