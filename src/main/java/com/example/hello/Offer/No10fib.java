@@ -7,22 +7,18 @@ package com.example.hello.Offer;
 public class No10fib {
     public static void main(String[] args) {
         System.out.println(fib(3));
-
-
     }
 
-    public static int fib(int n) {
-      if (n <2){
-          return n;
-      }
 
-       int p = 0 , q =1 ,r =1;
-        for (int i = 0; i < n -2 ; i++) {
-            p = q;
-            q=r;
-            r = (p+q)%1000000007;
+    public static int fib(Integer n){
+        if (n <=0){
+            return 0;
         }
-      return r;
+        if (n == 1){
+            return 1;
+        }
+        return fib(n-1)+fib(n-2);
+
     }
 
 
