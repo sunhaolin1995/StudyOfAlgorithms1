@@ -1,14 +1,17 @@
 package com.example.hello.Offer;
 
+import java.util.ArrayList;
 /**
  * @author 孙浩林
  * @date: 1/16/24 11:19
  */
 public class No8getNext {
 
+    //普通的中序遍历
+    static ArrayList<TreeLinkNode> nodes = new ArrayList<>();
 
     public static void main(String[] args) {
-// 创建根节点
+        // 创建根节点
         TreeLinkNode root = new TreeLinkNode(8);
         // 创建根节点的左子节点
         TreeLinkNode left1 = new TreeLinkNode(6);
@@ -34,11 +37,42 @@ public class No8getNext {
         TreeLinkNode right3 = new TreeLinkNode(11);
         right1.right = right3;
         right3.parent = right1;
-        TreeLinkNode treeLinkNode = GetNext(root);
-        System.out.println(treeLinkNode.val);
+        while (root != null) {
+            System.out.println(root.val);
+            root = GetNext(root);
+        }
     }
 
     public static TreeLinkNode GetNext(TreeLinkNode pNode) {
+        //获取根节点
+        TreeLinkNode root = pNode;
+        while (root.parent != null) {
+            root = root.parent;
+        }
+        //中序遍历打造 nodes
+        nodes.clear();
+        in_order(root);
+        //进行匹配
+        int n = nodes.size();
+        for (int i = 0; i < n - 1; i++) {
+            TreeLinkNode cur = nodes.get(i);
+            if (pNode == cur) {
+                return nodes.get(i + 1);
+            }
+        }
+        return null;
+    }
+
+    public static void in_order(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
+        in_order(root.left);
+        nodes.add(root);
+        in_order(root.right);
+    }
+
+    /*public static TreeLinkNode GetNext(TreeLinkNode pNode) {
 
         if (pNode == null) {
             return null;
@@ -61,6 +95,6 @@ public class No8getNext {
             }
         }
         return null;
-    }
+    }*/
 
 }
