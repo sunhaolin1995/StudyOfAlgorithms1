@@ -15,6 +15,22 @@ public class No2744MaximumNumberOfStringPairs {
     }
 
     public static int maximumNumberOfStringPairs(String[] words) {
+        int ans =0;
+        boolean[][] cvt = new boolean[26][26];
+        for (String s:words) {
+            int x = s.charAt(0)-'a';
+            int y = s.charAt(1)-'a';
+            if (cvt[y][x]){
+                ans++;
+            }else {
+                cvt[x][y]=true;
+            }
+        }
+        return ans;
+    }
+
+
+    /*public static int maximumNumberOfStringPairs(String[] words) {
         Map<String, Integer> cvt = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
                 cvt.put(words[i], cvt.getOrDefault(words[i],0)+1);
@@ -30,6 +46,6 @@ public class No2744MaximumNumberOfStringPairs {
             }
         }
         return res/2;
-    }
+    }*/
 
 }
