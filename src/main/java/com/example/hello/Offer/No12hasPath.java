@@ -42,7 +42,7 @@ public class No12hasPath {
         //然后修改当前坐标的值
         matrix[i][j] = '.';
         //走递归，沿着当前坐标的上下左右 4 个方向查找
-        boolean res = dfs(matrix, word, i, j, index + 1) || dfs(matrix, word, i - 1, j, index + 1)
+        boolean res = dfs(matrix, word, i+1, j, index + 1) || dfs(matrix, word, i - 1, j, index + 1)
                 || dfs(matrix, word, i, j + 1, index + 1) || dfs(matrix, word, i, j - 1, index + 1);
         matrix[i][j] = tmp;
         return res;
