@@ -20,6 +20,24 @@ public class No14cutRope {
         if (n == 3) {
             return 2;
         }
+        int timeOfThree = n / 3;
+        if (n - timeOfThree * 3 == 1) {
+            timeOfThree -= 1;
+        }
+        int timeOfTwo = (n-timeOfThree *3)/2;
+        return (int)(Math.pow(3,timeOfThree)*Math.pow(2,timeOfTwo));
+
+    }
+    /*public static int cutRope(int n) {
+        if (n < 2) {
+            return 0;
+        }
+        if (n == 2) {
+            return 1;
+        }
+        if (n == 3) {
+            return 2;
+        }
 
         int[] products = new int[n + 1];
         products[0] = 0;
@@ -38,6 +56,6 @@ public class No14cutRope {
         }
         max = products[n];
         return max;
-    }
+    }*/
 
 }
