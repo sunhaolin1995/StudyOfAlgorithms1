@@ -30,11 +30,10 @@ public class No14cutRope {
         for (int i = 4; i <= n; i++) {
             max = 0;
             for (int j = 1; j <= i / 2; j++) {
+                //第二个循环的意义是让两个长度相乘，所以 j<=i/2是为了避免重复计算，比如计算 34和 43，
+                // j 从 1 开始是因为在第二个循环中模拟剪绳子，我们不需要记录剪下的长度为 0 的绳子
                 int product = products[j] * products[i - j];
-                if (max < product) {
-                    max = product;
-                }
-                products[i] = max;
+                products[i] = Math.max(max,product);
             }
         }
         max = products[n];
