@@ -4,7 +4,7 @@ package com.example.hello.Offer;
  * @author 孙浩林
  * @date: 1/21/24 14:39
  */
-public class N015NumberOf1 {
+public class No15NumberOf1 {
     public static void main(String[] args) {
         System.out.println(NumberOf1(5345345));
     }
