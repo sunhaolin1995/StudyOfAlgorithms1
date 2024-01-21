@@ -32,6 +32,20 @@ public class No16power {
         }
         return res;
     }
+    /***
+     * 这个方法和上面的方法是等价的
+     */
+    /*private static double Pow(double x, int y) {
+        double res = 1;
+        while (y != 0) {
+            if (y % 2 == 1) {
+                res = res * x;
+            }
+            x = x * x;
+            y = y / 2;
+        }
+        return res;
+    }*/
 
    /* public static double Power(double base, int exponent) {
         //处理负数次方
