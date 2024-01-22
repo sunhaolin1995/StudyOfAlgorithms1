@@ -1,10 +1,5 @@
 package com.example.hello.Offer;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-
 /**
  * @author 孙浩林
  * @date: 1/22/24 14:49
@@ -22,13 +17,37 @@ public class No22FindKthToTail {
         listNode3.next = listNode4;
         listNode4.next = listNode5;
         ListNode listNode = FindKthToTail(listNode1, 2);
-        while (listNode!=null){
+        while (listNode != null) {
             System.out.println(listNode.val);
-            listNode =listNode.next;
+            listNode = listNode.next;
         }
     }
 
-    public static ListNode FindKthToTail (ListNode pHead, int k) {
+    public static ListNode FindKthToTail(ListNode pHead, int k) {
+        if (pHead == null) {
+            return null;
+        }
+        int fast = 1;
+        ListNode dummy = new ListNode(0);
+        ListNode cvt = pHead;
+        while (pHead != null) {
+            if (fast <= k) {
+                pHead = pHead.next;
+                fast++;
+            } else {
+                pHead = pHead.next;
+                cvt = cvt.next;
+                fast++;
+            }
+        }
+        if (fast <= k) {
+            return null;
+        }
+        return cvt;
+    }
+
+
+    /*public static ListNode FindKthToTail (ListNode pHead, int k) {
         if (pHead ==null){
             return null;
         }
@@ -48,7 +67,7 @@ public class No22FindKthToTail {
             dummy =dummy.next;
         }
         return res.next;
-    }
+    }*/
 
 
 }
