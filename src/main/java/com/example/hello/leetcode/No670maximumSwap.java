@@ -1,7 +1,5 @@
 package com.example.hello.leetcode;
 
-import java.util.Arrays;
-
 /**
  * @author 孙浩林
  * @date: 1/22/24 08:43
@@ -12,6 +10,28 @@ public class No670maximumSwap {
     }
 
     public static int maximumSwap(int num) {
+        char[] s = Integer.toString(num).toCharArray();
+        int maxIdx = s.length - 1;
+        int p = -1, q = 0;
+        for (int i = s.length - 2; i >= 0; i--) {
+            if (s[i] > s[maxIdx]) { // s[i]是目前最大数字
+                maxIdx = i;
+            } else if (s[i] < s[maxIdx]) { // s[i]右边有比他大的
+                p = i;
+                q = maxIdx;//更新 p 和 q
+            }
+        }
+        if (p == -1) {
+            return num;
+        }
+        char temp = s[p];
+        s[p] = s[q];
+        s[q] = temp;
+        return Integer.parseInt(new String(s));
+
+    }
+
+   /* public static int maximumSwap(int num) {
         if (num == 0) {
             return 0;
         }
@@ -60,6 +80,6 @@ public class No670maximumSwap {
             }
         }
         return Integer.parseInt(res.toString());
-    }
+    }*/
 
 }
