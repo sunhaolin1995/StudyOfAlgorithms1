@@ -16,28 +16,28 @@ public class No25merge {
         head2.next = new ListNode(4);
         head2.next.next = new ListNode(6);
         ListNode merge = Merge(head1, head2);
-        while (merge!=null){
+        while (merge != null) {
             System.out.println(merge.val);
-            merge =merge.next;
+            merge = merge.next;
         }
 
     }
 
-    public static ListNode Merge (ListNode pHead1, ListNode pHead2) {
+    public static ListNode Merge(ListNode pHead1, ListNode pHead2) {
         // write code here
-        if (pHead1 == null){
+        if (pHead1 == null) {
             return pHead2;
         }
-        if (pHead2 == null){
+        if (pHead2 == null) {
             return pHead1;
         }
         ListNode mergeHead = null;
-        if (pHead1.val > pHead2.val){
+        if (pHead1.val > pHead2.val) {
             mergeHead = pHead2;
-            mergeHead.next = Merge(pHead1,pHead2.next);
-        }else {
+            mergeHead.next = Merge(pHead1, pHead2.next);
+        } else {
             mergeHead = pHead1;
-            mergeHead.next = Merge(pHead2,pHead1.next);
+            mergeHead.next = Merge(pHead2, pHead1.next);
         }
         return mergeHead;
     }
