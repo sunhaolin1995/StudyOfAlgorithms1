@@ -13,19 +13,38 @@ public class No28isSymmetrical {
 
     public static void main(String[] args) {
         // 树：[1,2,2,3,4,4,3]
-        /*TreeNode root = new TreeNode(1);
+        TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.right = new TreeNode(2);
         root.left.left = new TreeNode(3);
         root.left.right = new TreeNode(4);
         root.right.left = new TreeNode(4);
-        root.right.right = new TreeNode(3);*/
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(2);
+        root.right.right = new TreeNode(3);
+        /*TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(2);*/
         System.out.println(isSymmetrical(root));
     }
-
     public static boolean isSymmetrical(TreeNode pRoot) {
+        if (pRoot == null) {
+            return true;
+        }
+        return recursion(pRoot,pRoot);
+    }
+
+    public static boolean recursion(TreeNode root1,TreeNode root2){
+        //可以两个都为空
+        if (root1 == null && root2 == null){
+            return true;
+        }
+        //只有一个为空或者空节点不同，必定不对称
+        if (root1 == null || root2 == null || root1.val != root2.val){
+            return false;
+        }
+        return recursion(root1.left,root2.right) && recursion(root1.right,root2.left);
+    }
+
+
+   /* public static boolean isSymmetrical(TreeNode pRoot) {
         if (pRoot == null) {
             return true;
         }
@@ -55,9 +74,8 @@ public class No28isSymmetrical {
                     return false;
                 }
             }
-
         }
         return true;
-    }
+    }*/
 
 }
