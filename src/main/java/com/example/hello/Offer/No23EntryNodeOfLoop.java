@@ -27,7 +27,7 @@ public class No23EntryNodeOfLoop {
         System.out.println(listNode.val);
     }
 
-    public static ListNode EntryNodeOfLoop(ListNode pHead) {
+    /*public static ListNode EntryNodeOfLoop(ListNode pHead) {
         if (pHead == null) {
             return null;
         }
@@ -44,53 +44,40 @@ public class No23EntryNodeOfLoop {
             pHead =pHead.next;
         }
         return res;
-    }
+    }*/
 
-    /*public static ListNode EntryNodeOfLoop(ListNode pHead) {
+    public static ListNode EntryNodeOfLoop(ListNode pHead) {
         if (pHead == null) {
             return null;
         }
-        ListNode fast = pHead, slow = pHead;
-
-        boolean hasCycle = false;
-        //先判断是否有环
-        while (slow.next != null && fast.next != null && fast.next.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow.val == fast.val) {
-                hasCycle = true;
-
-            }
-        }
-        //如果没有环，返回 null
-        if (!hasCycle) {
-            return null;
-        }
-
-        //求环的长度
-        int circleLength = 0;
-        ListNode slowCircle = slow;
-        ListNode fastCircle = slow;
-        while (true) {
-            slowCircle = slowCircle.next;
-            fastCircle = fastCircle.next.next;
-            circleLength++;
-            if (slowCircle == fastCircle) {
+        ListNode fast=pHead;
+        ListNode low=pHead;
+        while(fast!=null&&fast.next!=null){
+            fast=fast.next.next;
+            low=low.next;
+            if(fast==low)
                 break;
-            }
         }
+        if(fast==null||fast.next==null)
+            return null;
+        low=pHead;
+        while(fast!=low){
+            fast=fast.next;
+            low=low.next;
+        }
+        return low;
 
-        ListNode fastRes = pHead;
-        for (int i = 0; i < circleLength; i++) {
-            fastRes = fastRes.next;
-        }
-        ListNode slowRes = pHead;
-        while (slowRes != fastRes) {
-            slowRes = slowRes.next;
-            fastRes = fastRes.next;
-        }
+    }
 
-        return fastRes;
-    }*/
+
+
+
+
+
+
+
+
+
+
 
 }
