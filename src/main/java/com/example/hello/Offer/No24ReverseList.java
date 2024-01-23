@@ -17,18 +17,19 @@ public class No24ReverseList {
         numFour.next = numFive;
 
         ListNode listNode = reverseList(head);
-
+        while (listNode != null){
+            System.out.println(listNode.val);
+            listNode= listNode.next;
+        }
     }
 
     public static ListNode reverseList(ListNode head) {
-        ListNode cur = head,pre = null;
-
-        while (cur != null){
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
-
+        ListNode cur = head ,pre =null;
+        while (cur!=null){
+            ListNode temp =cur.next;
+            cur.next =pre;
+            pre =cur;
+            cur =temp;
         }
         return pre;
     }
