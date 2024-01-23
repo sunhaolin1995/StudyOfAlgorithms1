@@ -19,20 +19,22 @@ public class MinStack {
         System.out.println(minStack.min()); //  返回 -2.
     }
 
-    private Stack<Integer> stack;
 
+    private Stack<Integer> stack;
     private Stack<Integer> minStack;
 
-    /** initialize your data structure here. */
     public MinStack() {
-        this.stack = new Stack<Integer>();
-        this.minStack = new Stack<Integer>();
+        this.stack = new Stack<>();
+        this.minStack = new Stack<>();
         minStack.push(Integer.MAX_VALUE);
     }
 
-    public void push(int x) {
-        stack.push(x);
-        minStack.push(Math.min(x,minStack.peek()));
+
+
+    public void push(int node) {
+        stack.push(node);
+        minStack.push(Math.min(node, minStack.peek()));
+
     }
 
     public void pop() {
@@ -47,7 +49,6 @@ public class MinStack {
     public int min() {
         return minStack.peek();
     }
-
 
 
 }
