@@ -11,6 +11,13 @@ public class No31IsPopOrder {
     }
 
     public static boolean IsPopOrder(int[] pushV, int[] popV) {
+
+
+        return false;
+    }
+
+
+    /*public static boolean IsPopOrder(int[] pushV, int[] popV) {
         Deque<Integer> cvt = new ArrayDeque<>();
         cvt.push(-1001);
         int popI = 0;
@@ -32,6 +39,7 @@ public class No31IsPopOrder {
             cvt.pop();
         }
         return popI == popV.length;
+    }*/
 
-    }
+
 }
