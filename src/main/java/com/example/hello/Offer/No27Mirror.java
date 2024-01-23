@@ -1,5 +1,8 @@
 package com.example.hello.Offer;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author 孙浩林
  * @date: 1/23/24 13:54
@@ -34,10 +37,38 @@ public class No27Mirror {
         if (pRoot == null) {
             return null;
         }
+
+        TreeNode res = pRoot;
+        Queue<TreeNode> cvt = new LinkedList<>();
+        cvt.offer(pRoot);
+        while (!cvt.isEmpty()) {
+            TreeNode node = cvt.poll();
+
+            TreeNode left = node.left;
+            TreeNode right = node.right;
+            //交换左右子节点
+            node.left=right;
+            node.right =left;
+
+            if (right != null) {
+                cvt.offer(right);
+            }
+            if (left != null) {
+                cvt.offer(left);
+            }
+        }
+        return res;
+    }
+
+    /*public static TreeNode Mirror(TreeNode pRoot) {
+        if (pRoot == null) {
+            return null;
+        }
         TreeNode res = new TreeNode(pRoot.val);
         res.left = Mirror(pRoot.right);
         res.right = Mirror(pRoot.left);
         return res;
-    }
+    }*/
+
 
 }
