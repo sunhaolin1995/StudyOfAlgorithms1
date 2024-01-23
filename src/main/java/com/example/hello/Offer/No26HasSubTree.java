@@ -1,6 +1,9 @@
 package com.example.hello.Offer;
 
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class No26HasSubTree {
 
     public static void main(String[] args) {
@@ -26,6 +29,31 @@ public class No26HasSubTree {
     }
 
     public static boolean HasSubtree(TreeNode root1, TreeNode root2) {
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root1);
+        while (!queue.isEmpty()) {
+            TreeNode node1 = queue.poll();
+            if (node1.val == root2.val) {
+                if (DoesTree1HaveTree2(node1,root2)){
+                    return true;
+                }
+            }
+            if (node1.left!=null){
+                queue.offer(node1.left);
+            }
+            if (node1.right!= null){
+                queue.offer(node1.right);
+            }
+        }
+        return false;
+    }
+
+    /*
+
+    public static boolean HasSubtree(TreeNode root1, TreeNode root2) {
 
         if (root1 == null || root2 == null) {
             return false;
@@ -39,7 +67,7 @@ public class No26HasSubTree {
         }
         return res;
     }
-
+*/
     public static boolean DoesTree1HaveTree2(TreeNode root1, TreeNode root2) {
         if (root2 == null) {
             return true;
