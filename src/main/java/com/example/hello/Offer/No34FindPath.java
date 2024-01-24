@@ -1,8 +1,6 @@
 package com.example.hello.Offer;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 public class No34FindPath {
@@ -25,16 +23,31 @@ public class No34FindPath {
 
     static ArrayList<ArrayList<Integer>> res = new ArrayList<>();
 
+    static LinkedList<Integer> path = new LinkedList<>();
     public static ArrayList<ArrayList<Integer>> FindPath(TreeNode root, int target) {
         if (root == null) {
             return res;
         }
-        DFSFindPath(root, new ArrayList<>(), target);
+        DFSFindPath(root,  target);
         return res;
     }
 
-    public static void DFSFindPath(TreeNode root, ArrayList<Integer> cvt, int target) {
+    public static void DFSFindPath(TreeNode root,int target) {
+        if (root == null) {
+            return;
+        }
+        path.add(root.val);
+        target =target- root.val;
+        if (target == 0 && root.left==null && root.right == null){
+            res.add(new ArrayList<>(path));
+        }
+        DFSFindPath(root.left,target);
+        DFSFindPath(root.right,target);
+        path.removeLast();
+    }
 
+
+   /* public static void DFSFindPath(TreeNode root, ArrayList<Integer> cvt, int target) {
         if (root == null) {
             return;
         }
@@ -50,7 +63,7 @@ public class No34FindPath {
         }
         DFSFindPath(root.left, tempCvt, target);
         DFSFindPath(root.right, tempCvt, target);
-    }
+    }*/
 
 
 }
