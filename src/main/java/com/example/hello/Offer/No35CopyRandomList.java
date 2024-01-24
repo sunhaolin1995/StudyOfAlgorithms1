@@ -1,8 +1,5 @@
 package com.example.hello.Offer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author 孙浩林
  * @date: 2/19/23 19:12
@@ -44,6 +41,41 @@ public class No35CopyRandomList {
     }
 
     public static RandomListNode Clone(RandomListNode pHead) {
+        if (pHead == null) {
+            return null;
+        }
+        RandomListNode cur = pHead;
+        //在每个节点后插入对应的复制节点
+        while (cur != null) {
+            RandomListNode copyList = new RandomListNode(cur.label);
+            copyList.next = cur.next;
+            cur.next = copyList;
+            cur = copyList.next;
+        }
+        //设置复制节点的 random 指针
+        cur =pHead;
+        while (cur!=null){
+            if (cur.random != null){
+                cur.next.random = cur.random.next;
+            }
+            cur =cur.next.next;
+        }
+        //分离原链表和复制链表
+        cur =pHead;
+        RandomListNode newHead =pHead.next;
+        RandomListNode newCur =newHead;
+        while (cur!=null){
+            cur.next =cur.next.next;
+            if (newCur.next != null){
+                newCur.next = newCur.next.next;
+            }
+            cur =cur.next;
+            newCur = newCur.next;
+        }
+        return newHead;
+    }
+
+    /*public static RandomListNode Clone(RandomListNode pHead) {
         RandomListNode dummyPhead = pHead;
 
         Map<Integer, RandomListNode> cvt = new HashMap<>();
@@ -74,7 +106,7 @@ public class No35CopyRandomList {
             dummyPhead1 = dummyPhead1.next;
         }
         return res.next;
-    }
+    }*/
 
 }
 
