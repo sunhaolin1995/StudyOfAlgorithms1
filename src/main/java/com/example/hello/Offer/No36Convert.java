@@ -15,10 +15,38 @@ public class No36Convert {
         treeNode1.right.left =new TreeNode(12);
         treeNode1.right.right =new TreeNode(16);
         TreeNode convert = Convert(treeNode1);
-
+        while (convert!=null){
+            System.out.println(convert.val);
+            convert =convert.right;
+        }
     }
 
     static TreeNode pre,head;
+
+    public static TreeNode Convert(TreeNode pRootOfTree) {
+        if (pRootOfTree == null){
+            //中序遍历，叶子为空则返回
+            return null;
+        }
+        //首先递归到最左最小值
+        Convert(pRootOfTree.left);
+        //找到最小值，c初始化 head 和 pre
+        if (pre == null){
+            head = pRootOfTree;
+            pre =pRootOfTree;
+        }else {//与上一个节点建立连接，将 pre 设置为当前值
+            pre.right =pRootOfTree;
+            pRootOfTree.left =pre;
+            pre =pRootOfTree;
+        }
+        Convert(pRootOfTree.right);
+        return head;
+    }
+
+
+
+
+    /*static TreeNode pre,head;
 
     public static TreeNode Convert(TreeNode pRootOfTree) {
         if (pRootOfTree == null){
@@ -43,6 +71,6 @@ public class No36Convert {
         cur.left = pre;
         pre =cur;
         dfs(cur.right);
-    }
+    }*/
 
 }
