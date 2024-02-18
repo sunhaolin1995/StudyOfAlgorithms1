@@ -1,6 +1,8 @@
 package com.example.hello.Offer;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class No41getMedian {
 
@@ -12,7 +14,39 @@ public class No41getMedian {
         }
     }
 
-    public static ArrayList<Integer> cvt = new ArrayList<>();
+    public static Queue<Integer> minHeap = new PriorityQueue<>();
+
+    public static Queue<Integer> maxHeap = new PriorityQueue<>((a,b)->(b-a));
+
+
+    public static void Insert(Integer num) {
+        if (maxHeap.isEmpty()){
+            maxHeap.offer(num);
+        }else {
+            if (num <= maxHeap.peek()) {
+                maxHeap.offer(num);
+            } else {
+                minHeap.offer(num);
+            }
+
+            if (maxHeap.size() > minHeap.size() + 1) {
+                minHeap.offer(maxHeap.poll());
+            } else if (maxHeap.size() < minHeap.size()) {
+                maxHeap.offer(minHeap.poll());
+            }
+        }
+    }
+
+    public static Double GetMedian() {
+        if (minHeap.size() == maxHeap.size()){
+            return (double)(minHeap.peek()+maxHeap.peek())/2;
+        }else {
+            return (double)maxHeap.peek();
+        }
+    }
+
+
+    /*public static ArrayList<Integer> cvt = new ArrayList<>();
 
     public static void Insert(Integer num) {
         int insert = 0;
@@ -30,7 +64,7 @@ public class No41getMedian {
         } else {
             return (double) cvt.get((cvt.size() - 1) / 2);
         }
-    }
+    }*/
 
 
 }
