@@ -1,9 +1,5 @@
 package com.example.hello.Offer;
 
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Set;
-
 public class No49uglyNumber {
 
     public static void main(String[] args) {
@@ -12,6 +8,27 @@ public class No49uglyNumber {
 
 
     public static int GetUglyNumber_Solution(int index) {
+        int[] dp = new int[index + 1];
+        dp[1] = 1;
+        int p2 = 1, p3 = 1, p5 = 1;
+        for (int i = 2; i <= index; i++) {
+            int num2 = dp[p2] * 2, num3 = dp[p3] * 3, num5 = dp[p5] * 5;
+            dp[i] = Math.min(Math.min(num2, num3), num5);
+            if (dp[i] == num2) {
+                p2++;
+            }
+            if (dp[i] == num3) {
+                p3++;
+            }
+            if (dp[i] == num5) {
+                p5++;
+            }
+        }
+        return dp[index];
+
+    }
+
+    /*public static int GetUglyNumber_Solution(int index) {
         // write code here
         int[] factors = {2, 3, 5};
         Set<Long> seen = new HashSet<>();
@@ -30,7 +47,7 @@ public class No49uglyNumber {
             }
         }
         return ugly;
-    }
+    }*/
 
 
 }
