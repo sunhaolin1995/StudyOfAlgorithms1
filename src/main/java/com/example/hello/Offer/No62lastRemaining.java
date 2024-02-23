@@ -18,5 +18,32 @@ public class No62lastRemaining {
 
     }
 
+   /* public int LastRemaining_Solution(int n, int m) {
 
+        if (n <= 0 || m <= 0) {
+            return -1;
+        }
+
+        ListNode head = new ListNode(0);
+        ListNode node = head;
+        for (int i = 1; i < n; i++) {
+            node.next = new ListNode(i);
+            node = node.next;
+        }
+        node.next = head;
+
+
+        //k表示走的步数
+        int k = 0;
+        while (node.next != node) {
+            if (++k == m) {
+                node.next = node.next.next;
+                k = 0;
+            } else {
+                node = node.next;
+            }
+        }
+
+        return node.val;
+    }*/
 }
