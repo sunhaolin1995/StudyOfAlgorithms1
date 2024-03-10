@@ -23,6 +23,22 @@ public class no3SelectionSort {
 
     public static void SelectionSort(int[] num1){
         for (int i = 0; i < num1.length ; i++) {
+            int minvalue = i;
+            for (int j = i+1; j < num1.length ; j++) {
+                if (num1[j]<num1[minvalue]){
+                    minvalue = j;
+                }
+            }
+            int temp  =num1[i];
+            num1[i] = num1[minvalue];
+            num1[minvalue] =temp;
+        }
+
+
+    }
+
+    /*public static void SelectionSort(int[] num1){
+        for (int i = 0; i < num1.length ; i++) {
             int minValue =i;
             for (int j = i+1; j < num1.length ; j++) {
                 if (num1[j]<num1[minValue]){
@@ -32,10 +48,7 @@ public class no3SelectionSort {
             int temp =num1[i];
             num1[i]=num1[minValue];
             num1[minValue]=temp;
-
         }
-
-
-    }
+    }*/
 
 }
