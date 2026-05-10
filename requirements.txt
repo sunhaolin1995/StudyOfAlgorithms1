@@ -1,0 +1,6 @@
+streamlit
+yfinance
+pdfplumber
+openai
+plotly
+pandas
